@@ -8,17 +8,19 @@
 
   --background-color: #ffffff;
   --accent-color: #000000;
-  --background-image:
-  repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
-  repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
-  linear-gradient(180deg, #e7e7e7 0%, #1a1a1a 100%);
+  --background-image: repeating-linear-gradient(
+      to right,
+      #d3d3d3 0 2px,
+      transparent 2px 4px
+    ),
+    repeating-linear-gradient(to bottom, #d3d3d3 0 2px, transparent 2px 4px),
+    linear-gradient(180deg, #e7e7e7 0%, #1a1a1a 100%);
 
   --label-color: var(--accent-color);
   --label-shadow: var(--background-color);
   --button-text-color: var(--background-color);
   --icon-color: var(--accent-color);
-  --icon-accent-color: #FF0000;
+  --icon-accent-color: #ff0000;
 
   --border-width: 2px;
-  
 }
