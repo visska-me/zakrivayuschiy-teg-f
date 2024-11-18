@@ -15,6 +15,425 @@
 */
 
 .page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+  min-inline-size: 375px;
+  min-block-size: 100vh;
+  font-family: var(--font-family, "Inter", sans-serif);
+  font-size: 1.125rem;
+  font-variation-settings: "wght" var(--font-weight, 400);
+  background-color: var(--background-color, #ffffff);
+  color: var(--accent-color, #000000);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  width: clamp(23.438rem, 16.285rem + 30.52vw, 43.75rem);
+  margin: 0 auto;
+}
+
+.header {
+  background-color: var(--background-color, #ffffff);
+  border: var(--border-width, 2px) solid var(--accent-color, #000000);
+  font-family: var(--font-family-accent, "PressStart2P", monospace);
+  font-weight: var(--font-weight, 400);
+  max-inline-size: 43.75rem;
+  margin-block: 6.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-logo {
+  display: block;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  margin-block-start: clamp(7.5rem, 7.148rem + 1.502vi, 8.5rem);
+  margin-block-end: 1.25rem;
+}
+
+.header-title {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  line-height: 1;
+  text-transform: uppercase;
+  text-align: center;
+  margin-block-end: 1.56rem;
+}
+
+.header__theme-menu {
+  margin: 0 auto 1.56rem;
+  padding-left: 1.25rem;
+  inline-size: min-content;
+}
+
+.theme-menu__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.9rem;
+}
+
+.theme-menu__item {
+  font-size: 0;
+  line-height: 0;
+}
+
+.theme-menu__button {
+  padding: 0 0.5rem;
+  border: none;
+  position: relative;
+  font-family: var(--font-family-accent), "PressStart2P", monospace;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight, 400);
+  line-height: 1;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus-visible::after {
+  inline-size: 100%;
+}
+
+.theme-menu__button:disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.theme-menu__button::after {
+  content: "";
+  position: absolute;
+  inset-block-end: 0.125rem;
+  display: block;
+  inline-size: 0;
+  block-size: 0.125rem;
+  background-color: var(--accent-color, #000);
+  transition: width 0.3s ease-in-out;
+}
+
+@keyframes pointer-shift {
+  0% {
+    transform: translateX(0); /* Начальное положение */
+  }
+  100% {
+    transform: translateX(4px); /* Конечное положение — сдвиг на 4px вправо */
+  }
+}
+
+.theme-menu__button:disabled::before {
+  content: "\25B6";
+  position: absolute;
+  inset-inline-start: -1.25rem;
+  animation: pointer-shift 0.5s ease-in-out infinite alternate;
+}
+
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+}
+
+.card {
+  border: var(--border-width, 2px) solid var(--accent-color);
+  background-color: var(--background-color);
+}
+
+.card-title {
+  font-size: 18px;
+  padding: 0.4rem 0.5rem;
+  font-variation-settings: "wght" var(--font-weight-title, 700);
+  line-height: 1.21;
+  border-bottom: var(--border-width, 2px) solid var(--accent-color);
+}
+
+.card-image-container {
+  position: relative;
+  margin: 0;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  aspect-ratio: 1 / 1;
+}
+
+.card-label {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.6rem;
+  font-family: var(--font-family-accent);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--label-color);
+  text-shadow: 1px 1px var(--label-shadow);
+  opacity: 0.5;
+
+  /* Проверка поддержки text-stroke */
+  @supports (
+    (text-stroke: 1px var(--tag-shadow)) or
+      (-webkit-text-stroke: 1px var(--tag-shadow))
+  ) {
+    -webkit-text-stroke: 1px var(--label-shadow);
+    text-stroke: 1px var(--label-shadow);
+    text-shadow: none;
+  }
+}
+
+.card-text-container {
+  display: flex;
+  padding: 25px;
+  flex-direction: column;
+  gap: 25px;
+  border-top: 2px solid var(--accent-color);
+}
+
+.card-text {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 5px;
+  padding-inline-end: 1rem;
+  padding-block-end: 1rem;
+}
+
+/* Кнопка Like с иконкой */
+.card__icon-button {
+  background: none;
+  color: var(--accent-color);
+  border: 2px solid transparent; /* Прозрачная граница без фокуса */
+  padding: 0;
+  cursor: pointer;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+/* Эффект фокуса с плавным переходом */
+.card__icon-button:focus-visible {
+  border: 2px solid var(--accent-color); /* Рамка акцентного цвета */
+  transition: border 0.3s ease;
+}
+
+.card__like-image {
+  width: 100%;
+  height: 100%;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.content__button {
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+  font-family: var(--font-family-accent), monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 0.9;
+  cursor: pointer;
+  position: relative;
+  color: var(--button-text-color);
+  overflow: hidden;
+  margin: 0 0.5rem 0.45rem 0;
+}
+
+/* Анимация тени при фокусе */
+.content__button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Псевдоэлемент для анимации заливки */
+.content__button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: var(--accent-color);
+  transition: width 0.5s ease-in-out;
+  z-index: 0;
+}
+
+/* Анимация псевдоэлемента при наведении */
+.content__button:hover::before {
+  width: 100%;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Стили текста с режимом смешивания */
+.button__text {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Кнопка Like */
+.card__like-button {
+  width: 130px;
+  height: 38px;
+}
+
+.content__save_button {
+  display: block;
+  margin: auto;
+  margin-block-start: 50px;
+  margin-block-end: 105px;
+  padding: 15px 19px;
+}
+
+.content__save_img {
+  height: 21px;
+  width: 21px;
+}
+
+.dialog[open] {
+  width: 357px;
+  background: var(--background-color);
+  color: var(--accent-color);
+  padding: 30px;
+  font-family: var(--font-family-accent), monospace;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* Плавный затемненный фон для открытого состояния */
+.dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.75);
+  transition: background-color 0.3s ease;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dialog-info {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+
+.dialog-image {
+  max-width: 39px;
+  max-height: 39px;
+  height: 100%;
+  width: 100%;
+}
+
+.dialog-description {
+  text-transform: uppercase;
+}
+
+.dialog-button {
+  background: var(--background-color);
+  border: 2px solid var(--accent-color);
+  width: 293px;
+  height: 38px;
+  padding: 0;
+}
+
+.dialog-button .button__text {
+  text-transform: uppercase;
+}
+
+.filter_rainbow {
+  filter: hue-rotate(360deg) saturate(1.5);
+  animation: rainbow 5s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.filter_warmglow {
+  filter: brightness(1.2) sepia(0.6) saturate(1.3);
+}
+
+.filter_glass {
+  filter: blur(2px) brightness(1.2) saturate(1.5);
+}
+
+.filter_sepiamix {
+  filter: grayscale(0.5) sepia(0.3) brightness(1.2) contrast(1.5);
+}
+
+.filter_vintage {
+  filter: sepia(0.8) contrast(1.2) brightness(0.9) saturate(0.7);
+}
+
+.filter_blur {
+  filter: blur(5px);
+}
+
+.filter_night-vision {
+  filter: brightness(1.5) hue-rotate(120deg) contrast(2);
+}
+
+@media (width <= 375px) {
+  .page {
+    width: 100%;
+  }
+
+  .card__image-tag {
+    top: 21px;
+    right: 11px;
+  }
+
+  .button__text {
+    flex-direction: column;
+  }
+
+  .content__save_img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .dialog[open] {
+    width: 341px;
+  }
+
+  .dialog-description {
+    width: 198px;
+  }
+
+  .dialog-button {
+    width: 257px;
+  }
 }

@@ -12,3 +12,102 @@
 
 Кроме этого, не меняйте HTML переключателя тем. Его разметка также гарантирует работу своего скрипта.
 */
+
+
+/* Сердцевина при наведении закрашивается акцентным цветом с плавностью 0.3s. При уходе курсора должно быть 0.03s задержки, чтобы дождаться исчезновения основного тела.
+Основное тело закрашивается акцентным цветом с задержкой 0.05s и длительностью 0.3s. При уходе курсора — сразу и с плавностью 0.3s. */
+.like-icon .core {
+  transition: fill 0.3s 0.03s linear;
+}
+
+.like-icon .main-body {
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .core {
+  fill: var(--icon-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--icon-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* В активном состоянии сердцевина и основное тело закрашиваются красным. Переходы как при ховере, но цвет меняется на красный. */
+.like-icon:active .core {
+  fill: var(--icon-accent-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .main-body {
+  fill: var(--icon-accent-color);
+  transition: fill 0.3s 0.05s linear;
+}
+
+/* Сердцевина закрашивается сразу.
+Основное тело закрашивается с задержкой 0.03s.
+Контур закрашивается с задержкой 0.06s. */
+.like-icon.is-liked .core {
+  fill: var(--icon-accent-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--icon-accent-color);
+  transition: fill 0.3s 0.03s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--icon-accent-color);
+  transition: fill 0.3s 0.06s linear;
+}
+
+/* Эффект масштабирования и вспышка искр. */
+.like-icon.is-liked .heart {
+  animation: heartScale 0.3s 0.1s ease-in alternate;
+}
+
+.like-icon.is-liked .sparks {
+  animation: heartSparks 0.3s 0.3s ease-in forwards;
+}
+
+@keyframes heartScale {
+  0% {
+    scale: 1;
+  }
+  100% {
+    scale: 1.5;
+  }
+}
+
+@keyframes heartSparks {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+@keyframes arrowMove {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(4px);
+  }
+}
+
+/* Перекрашивание контура обратно при отключении
+Контур должен становиться прозрачным за 0.1s, без задержек */
+.like-icon .contour {
+  transition: fill 0.1s linear;
+}
+
+.like-icon .heart {
+  transform-origin: center center;
+}
