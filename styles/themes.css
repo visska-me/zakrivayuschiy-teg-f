@@ -55,7 +55,7 @@
     --label-shadow: var(--background-color);
     --button-text-color: var(--background-color);
     --icon-color: var(--accent-color);
-    --icon-accent-color: #ff0000;  
+    --icon-accent-color: #ff0000;
 
     --background-color: #ffffff;
     --accent-color: #000000;
@@ -78,7 +78,7 @@
     --label-shadow: var(--background-color);
     --button-text-color: var(--background-color);
     --icon-color: var(--accent-color);
-    --icon-accent-color: #ff0000;  
+    --icon-accent-color: #ff0000;
 
     --background-color: #000000;
     --accent-color: #00cc14;
