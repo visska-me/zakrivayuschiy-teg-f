@@ -1,13 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 256 256">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
   <style>
-    @media (prefers-color-scheme: dark) {
-      :root {
-        fill: #00CC14;
-      }
+
+    path {
+      fill: #000;
     }
-    @media (prefers-color-scheme: light) {
-      :root {
-        fill: #000;
+
+    @media (prefers-color-scheme: dark) {
+      path {
+        fill: #00cc14;
       }
     }
   </style>
